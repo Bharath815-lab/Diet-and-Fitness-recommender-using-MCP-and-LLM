@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness AI Assistant | Smart Workout & Nutrition Coach</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="landing-body">
+    <div class="landing-overlay">
+        <header class="landing-nav">
+            <div class="nav-left">
+                <div class="nav-logo">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="nav-brand">
+                    <span class="brand-name">Fitness AI Assistant</span>
+                    <span class="brand-tagline">Your personal AI-powered fitness coach</span>
+                </div>
+            </div>
+            <nav class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#how-it-works">How it works</a>
+                <a href="#why-ai">Why AI</a>
+            </nav>
+            <div class="nav-actions">
+                <a href="{{ url_for('login') }}" class="nav-link">Log in</a>
+                <a href="{{ url_for('signup') }}" class="btn-nav-primary">Sign up</a>
+            </div>
+        </header>
+
+        <main class="landing-main">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <div class="flash-container">
+                        {% for category, message in messages %}
+                            <div class="flash-message flash-{{ category }}">{{ message }}</div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            <section class="landing-hero">
+                <div class="hero-content">
+                    <h1>Train smarter, eat better, and hit your goals with AI.</h1>
+                    <p class="hero-subtitle">
+                        Combine real workout data, heart rate, and body metrics with an intelligent assistant
+                        that builds calorie-aware plans and high-protein meal recommendations – in seconds.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="{{ url_for('signup') }}" class="btn-primary hero-btn">
+                            <span class="btn-icon">⚡</span>
+                            <span>Start free & create my plan</span>
+                        </a>
+                        <a href="{{ url_for('login') }}" class="btn-secondary hero-btn hero-btn-secondary">
+                            <span class="btn-icon">🔐</span>
+                            <span>Log in to my dashboard</span>
+                        </a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat-card">
+                            <span class="stat-label">Calories predicted</span>
+                            <span class="stat-value">Precision ML model</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label">Meal sets</span>
+                            <span class="stat-value">Optimized by protein</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label">Goal focused</span>
+                            <span class="stat-value">Fat loss & muscle gain</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-card-grid">
+                    <div class="hero-card">
+                        <h2>Live fitness twin for your body</h2>
+                        <p>
+                            Every time you log a workout, the system predicts your calorie burn and
+                            builds nutrition sets that stay within your target range – no spreadsheets,
+                            no calculators, just clear guidance.
+                        </p>
+                        <ul class="hero-list">
+                            <li>📈 Smarter than generic calorie calculators</li>
+                            <li>🍽️ Meal sets balanced for calories and protein</li>
+                            <li>🧠 Clear explanations, not just numbers</li>
+                        </ul>
+                    </div>
+                    <div class="hero-card secondary">
+                        <h3>How you’ll use it each day</h3>
+                        <ol class="steps-list">
+                            <li>Log today’s workout and intensity.</li>
+                            <li>Get calories burned + three optimized meal sets.</li>
+                            <li>Follow the plan with clear daily guidance.</li>
+                        </ol>
+                        <a href="{{ url_for('signup') }}" class="inline-link">Create your free account →</a>
+                    </div>
+                </div>
+            </section>
+
+            <section id="features" class="feature-section">
+                <h2 class="section-heading">Built for real-world training and nutrition</h2>
+                <p class="section-subtitle">
+                    Under the hood, a machine learning model and nutrition optimizer work together
+                    to keep your workouts, calories, and meals aligned with your goals.
+                </p>
+                <div class="feature-grid">
+                    <article class="feature-card">
+                        <div class="feature-icon">🤖</div>
+                        <h3>AI calorie engine</h3>
+                        <p>
+                            A trained Random Forest model analyzes your gender, age, height, weight,
+                            duration, heart rate, and body temperature to estimate calories burned.
+                        </p>
+                        <ul>
+                            <li>Uses your real metrics, not population averages</li>
+                            <li>Adapts across low- and high-intensity sessions</li>
+                            <li>Great for cutting, recomposition, or bulking</li>
+                        </ul>
+                    </article>
+                    <article class="feature-card">
+                        <div class="feature-icon">🥗</div>
+                        <h3>Meal set optimizer</h3>
+                        <p>
+                            A nutrition solver scans your food database and constructs food sets
+                            that match your calorie target while maximizing protein.
+                        </p>
+                        <ul>
+                            <li>Three diverse meal-set options per session</li>
+                            <li>Calorie range automatically tuned to your goal</li>
+                            <li>Quick swap between maintenance / deficit / surplus</li>
+                        </ul>
+                    </article>
+                    <article class="feature-card">
+                        <div class="feature-icon">📋</div>
+                        <h3>Explained like a real coach</h3>
+                        <p>
+                            The AI assistant doesn’t just give numbers – it explains macros,
+                            reasoning, and how to use your plan day to day.
+                        </p>
+                        <ul>
+                            <li>Daily structure: training, meals, hydration</li>
+                            <li>Macro breakdowns you can actually follow</li>
+                            <li>Simple language, actionable guidance</li>
+                        </ul>
+                    </article>
+                </div>
+            </section>
+
+            <section id="how-it-works" class="steps-section">
+                <h2 class="section-heading">From workout to plan in under a minute</h2>
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <span class="step-number">1</span>
+                        <h3>Log your workout</h3>
+                        <p>Enter your session details on the fitness form – duration, heart rate, and how you’re training today.</p>
+                    </div>
+                    <div class="step-card">
+                        <span class="step-number">2</span>
+                        <h3>AI processes your data</h3>
+                        <p>Your inputs are sent to an ML model plus a nutrition optimization engine to compute calories and meal sets.</p>
+                    </div>
+                    <div class="step-card">
+                        <span class="step-number">3</span>
+                        <h3>Follow the plan</h3>
+                        <p>On the result screen, you’ll see calorie burn, three food-set options, and a coach-style explanation.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="why-ai" class="cta-section">
+                <div class="cta-card">
+                    <h2>Stop guessing. Start training with data and AI on your side.</h2>
+                    <p>
+                        Create a free account in seconds, log your next workout, and see how much
+                        easier it feels to stay on track when your calories and meals are planned for you.
+                    </p>
+                    <div class="cta-actions">
+                        <a href="{{ url_for('signup') }}" class="btn-primary hero-btn">
+                            <span class="btn-icon">🚀</span>
+                            <span>Create free account</span>
+                        </a>
+                        <a href="{{ url_for('login') }}" class="btn-secondary hero-btn hero-btn-secondary">
+                            <span class="btn-icon">👀</span>
+                            <span>Log in & generate a plan</span>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
+
+

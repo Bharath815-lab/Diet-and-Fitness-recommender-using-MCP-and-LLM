@@ -1,0 +1,21 @@
+[project]
+name = "mcpvideo"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "chromadb>=1.0.4",
+    "colorama>=0.4.6",
+    "mcp[cli]>=1.6.0",
+    "smolagents[litellm,mcp]>=1.13.0",
+    "yfinance>=0.2.55",
+    "flask>=3.0.0",
+    "bcrypt>=4.0.1",
+    "pymongo>=4.0.0",
+    "pandas>=2.0.0",
+    "openpyxl>=3.0.0",
+    "joblib",
+    "pulp",
+    "scikit-learn"
+]
